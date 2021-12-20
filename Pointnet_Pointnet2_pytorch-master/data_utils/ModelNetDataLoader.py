@@ -143,7 +143,7 @@ class ModelNetDataLoader(Dataset):
                 point_set = farthest_point_sample(point_set, self.npoints)
             else:
                 point_set = point_set[0:self.npoints, :]
-                
+
         point_set[:, 0:3] = pc_normalize(point_set[:, 0:3])
         if not self.use_normals:
             point_set = point_set[:, 0:3]
@@ -157,7 +157,7 @@ class ModelNetDataLoader(Dataset):
 if __name__ == '__main__':
     import torch
 
-    data = ModelNetDataLoader('/data/modelnet40_normal_resampled/', split='train')
+    data = ModelNetDataLoader('/../data/modelnet40_normal_resampled/', split='train')
     DataLoader = torch.utils.data.DataLoader(data, batch_size=12, shuffle=True)
     for point, label in DataLoader:
         print(point.shape)
